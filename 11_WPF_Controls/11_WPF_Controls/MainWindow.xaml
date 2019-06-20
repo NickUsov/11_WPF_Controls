@@ -1,0 +1,192 @@
+﻿<Window x:Class="_11_WPF_Controls.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_11_WPF_Controls"
+        mc:Ignorable="d"
+             Title="MainWindow" Height="450" Width="725" PreviewKeyDown="PreviewKeyDownBttn" PreviewKeyUp="PreviewKeyUpBttn">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="7" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="grid1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="30">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" >
+                <TextBlock Text="Speed:" Margin="5"/>
+                <TextBox Text="0 chars/min" Margin="5"/>
+                <TextBlock Text="Fails: 0"  Margin="150,5,25,5" Width="80" TextAlignment="Center"/>
+                <Slider Maximum="100" Minimum="1" Margin="40,5,25,5" Width="120"/>
+                <CheckBox Content="Case Sensetive"  Margin="5"/>
+            </StackPanel>
+            <DockPanel Grid.Column="1" Grid.Row="2" >
+                <Button  Content="Stop" Margin="5" DockPanel.Dock="Right" Width="70" Style="{StaticResource ButtonStyle1}"/>
+                <Button Content="Ok"   Margin="5" DockPanel.Dock="Right" Style="{StaticResource ButtonStyle1}"/>
+            </DockPanel>
+        </Grid>
+        <TextBox Grid.Row="1" Grid.ColumnSpan="30" Background="Aqua" />
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="`"/>
+        <Button Tag="num" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="1"/>
+        <Button Tag="num" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="2"/>
+        <Button Tag="num" Style="{StaticResource ButtonStyle1}"  Grid.Row="2" Grid.Column="6" Grid.ColumnSpan="2" Margin="5" Background="Yellow" Content="3"/>
+        <Button Tag="num"  Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="2" Margin="5" Background="LightGreen" Content="4"/>
+        <Button Tag="num"  Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="2" Margin="5" Background="LightBlue" Content="5"/>
+        <Button Tag="num"  Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="12" Grid.ColumnSpan="2" Margin="5" Background="LightBlue" Content="6"/>
+        <Button Tag="num"  Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="14" Grid.ColumnSpan="2" Margin="5" Background="Violet" Content="7"/>
+        <Button Tag="num" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="16" Grid.ColumnSpan="2" Margin="5" Background="Violet" Content="8"/>
+        <Button Tag="num" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="18" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="9"/>
+        <Button Tag="num" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="20" Grid.ColumnSpan="2" Margin="5" Background="Yellow" Content="0"/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="22" Grid.ColumnSpan="2" Margin="5" Background="LightGreen" Content="-"/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="24" Grid.ColumnSpan="2" Margin="5" Background="LightGreen" Content="="/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="2" Grid.Column="26" Grid.ColumnSpan="4" Margin="5" Background="Khaki" Content="BackSpace"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" Background="Khaki" Content="Tab"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="q"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="2" Margin="5" Background="Yellow" Content="w"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="7" Grid.ColumnSpan="2" Margin="5" Background="LightGreen" Content="e"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="9" Grid.ColumnSpan="2" Margin="5" Background="LightBlue" Content="r"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="11" Grid.ColumnSpan="2" Margin="5" Background="LightBlue" Content="t"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="13" Grid.ColumnSpan="2" Margin="5" Background="Violet" Content="y"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="15" Grid.ColumnSpan="2" Margin="5" Background="Violet" Content="u"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="17" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="i"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="19" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="o"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="21" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="p"/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="23" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="["/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="25" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="]"/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="3" Grid.Column="27" Grid.ColumnSpan="3" Margin="5" Background="Pink" Content="\"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="a"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="s"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="d"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="10" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="f"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="12" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="g"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="14" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="h"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="16" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="j"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="18" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="k"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="20" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="l"/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="22" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content=";"/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="24" Grid.ColumnSpan="2" Margin="5" Background="Pink" Content="'"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="4" Grid.Column="26" Grid.ColumnSpan="4" Margin="5" Background="Khaki" Content="Enter"/>
+        <Button Tag="other" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Margin="5" Background="Khaki" Content="Shift" Style="{DynamicResource ButtonStyle1}"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="2" Margin="5" Background="LightPink" Content="z"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="7" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content="x"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="9" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content="c"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="11" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content="v"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="13" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content="b"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="15" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content="n"/>
+        <Button Tag="letter" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="17" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content="m"/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="19" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content=","/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="21" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content="."/>
+        <Button Tag="simb" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="23" Grid.ColumnSpan="2" Margin="5" Background="LightCyan" Content="/"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="5" Grid.Column="25" Grid.ColumnSpan="5" Margin="5" Background="Khaki" Content="Shift"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Margin="5" Background="Khaki" Content="Ctrl"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" Margin="5" Background="Khaki" Content="Win"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="6" Grid.Column="6" Grid.ColumnSpan="3" Margin="5" Background="Khaki" Content="Alt"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="6" Grid.Column="9" Grid.ColumnSpan="12" Margin="5" Background="Khaki" Content="Space"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="6" Grid.Column="21" Grid.ColumnSpan="3" Margin="5" Background="Khaki" Content="Alt"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="6" Grid.Column="24" Grid.ColumnSpan="3" Margin="5" Background="Khaki" Content="Win"/>
+        <Button Tag="other" Style="{StaticResource ButtonStyle1}" Grid.Row="6" Grid.Column="27" Grid.ColumnSpan="3" Margin="5" Background="Khaki" Content="Ctrl"/>
+    </Grid>
+</Window>
